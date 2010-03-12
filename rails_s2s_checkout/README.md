@@ -1,9 +1,9 @@
-# rails_checkout
+# rails_s2s_checkout
 
 ## Overview
 
 This code is a demonstration of creating one time transactions using Braintree's
-transparent redirect API. This example uses a custom form builder to
+server-to-server API. This example uses a custom form builder to
 generate the HTML as well as display errors and repopulate the form
 as necessary. See app/helpers/braintree_form_builder.rb.
 

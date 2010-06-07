@@ -11,8 +11,6 @@ class PaymentsController < ApplicationController
     @result = Braintree::Transaction.sale(params[:transaction])
 
     if @result.success?
-      # success indicates that the input parameters were valid and a transaction was successfully created
-      # however, the transaction may be declined or rejected
       render :action => "confirm"
     else
       @amount = calculate_amount

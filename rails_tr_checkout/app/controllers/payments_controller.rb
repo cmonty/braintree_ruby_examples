@@ -6,8 +6,6 @@ class PaymentsController < ApplicationController
   def confirm
     @result = Braintree::Transaction.create_from_transparent_redirect(request.query_string)
     if @result.success?
-      # success indicates that the input parameters were valid and a transaction was successfully created
-      # however, the transaction may be declined or rejected
       render :action => "confirm"
     else
       @amount = calculate_amount

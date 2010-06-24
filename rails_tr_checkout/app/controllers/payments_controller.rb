@@ -4,7 +4,7 @@ class PaymentsController < ApplicationController
   end
 
   def confirm
-    @result = Braintree::Transaction.create_from_transparent_redirect(request.query_string)
+    @result = Braintree::TransparentRedirect.confirm(request.query_string)
     if @result.success?
       render :action => "confirm"
     else

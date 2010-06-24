@@ -8,7 +8,7 @@
      :params => @result && @result.params[:transaction],
      :errors => @result && @result.errors.for(:transaction),
      :builder => BraintreeFormBuilder,
-     :url => Braintree::Transaction.create_transaction_url,
+     :url => Braintree::TransparentRedirect.url,
      :html => {:autocomplete => "off"} do |f| -%>
   <% field_set_tag "Customer" do -%>
     <% f.fields_for :customer do |c| -%>

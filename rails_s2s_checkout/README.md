@@ -11,7 +11,7 @@ as necessary. See app/helpers/braintree_form_builder.rb.
 
 To run the example:
 
-* Install the braintree gem (gem install braintree -v 1.1.1)
+* Install the braintree gem (gem install braintree -v 2.3.1)
 * Configure config/initializers/braintree.rb using your credentials.
   If you need access to the sandbox [contact Braintree](http://bit.ly/contact-braintree).
 * ruby script/server

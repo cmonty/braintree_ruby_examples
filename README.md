@@ -13,3 +13,8 @@ See rails_s2s_checkout/README for instructions on running the example.
 A Rails example of creating one time transactions using the Braintree transparent redirect API.
 See rails_tr_checkout/README for instructions on running the example.
 
+## rails3_tr_checkout
+
+A Rails 3 example of creating one time transactions using the Braintree transparent redirect API.
+See rails3_tr_checkout/README for instructions on running the example.
+

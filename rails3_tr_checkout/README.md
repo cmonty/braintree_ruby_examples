@@ -14,5 +14,5 @@ To run the example:
 * Install the braintree gem with bundler (`bundle install`)
 * Configure config/initializers/braintree.rb using your credentials.
   If you need access to the sandbox [contact Braintree](http://bit.ly/contact-braintree).
-* ruby script/server
+* `rails server`
 

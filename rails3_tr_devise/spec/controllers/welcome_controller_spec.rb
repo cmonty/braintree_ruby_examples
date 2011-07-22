@@ -3,15 +3,15 @@ require 'spec_helper'
 describe WelcomeController do
 
   it "should redirect to Sign Up page" do
-    get :index
+    visit '/'
 
-    page.has_content? 'Sign in'
+    page.should have_content('Sign in')
   end
 
   it "should display product information" do
-    get :index
+    visit '/'
 
-    page.has_table? 'product', :rows => [['FooBar', '100']]
-    page.has_content? 'Products'
+    page.should have_table('product', :rows => [['FooBar', '100']])
+    page.should have_content('Products')
   end
 end

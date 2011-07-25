@@ -19,7 +19,7 @@ def sign_in_as_user
 
   page.fill_in 'user_email', :with => 'test@example.com'
   page.fill_in 'user_password', :with => '123456'
-  page.find('#user_submit').click
+  page.click_button 'user_submit'
 
   user
 end

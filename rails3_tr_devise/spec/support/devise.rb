@@ -15,11 +15,10 @@ end
 
 def sign_in_as_user
   user = create_user
+
   visit new_user_session_path
 
-  page.fill_in 'user_email', :with => 'test@example.com'
-  page.fill_in 'user_password', :with => '123456'
-  page.click_button 'user_submit'
-
-  user
+  fill_in 'user_email', :with => 'test@example.com'
+  fill_in 'user_password', :with => '123456'
+  click_button 'Sign in'
 end

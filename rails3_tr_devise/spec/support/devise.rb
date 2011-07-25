@@ -13,3 +13,13 @@ def create_user(attrs = {})
   User.create!(valid_attributes(attrs))
 end
 
+def sign_in_as_user
+  user = create_user
+  visit new_user_session_path
+
+  page.fill_in 'user_email', :with => 'test@example.com'
+  page.fill_in 'user_password', :with => '123456'
+  page.find('#user_submit').click
+
+  user
+end

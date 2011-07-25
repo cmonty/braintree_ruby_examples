@@ -9,7 +9,8 @@ describe WelcomeController do
   end
 
   it "should display product information" do
-    sign_in create_user
+    sign_in_as_user
+    Product.create(:name => 'FooBar', :price => 100)
 
     visit '/'
 

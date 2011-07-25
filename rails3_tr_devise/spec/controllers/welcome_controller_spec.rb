@@ -12,12 +12,20 @@ describe WelcomeController do
 
   it "should display product information" do
     Product.create(:name => 'FooBar', :price => 100)
+
     sign_in_as_user
 
     visit root_path
 
     page.should have_table('products')
     page.should have_content('Products')
+  end
 
+  it "should display link to setup payment info" do
+    sign_in_as_user
+
+    visit root_path
+
+    page.should have_content('Setup Your Payment Info')
   end
 end

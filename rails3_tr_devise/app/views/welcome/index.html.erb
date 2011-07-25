@@ -1,7 +1,25 @@
 <h1>Products</h1>
 <table id="products">
-  <tr>
-    <td><%= @product.name %></td>
-    <td>$<%= @product.price %></td>
-  </tr>
+  <% @products.each do |p|  %>
+    <tr>
+      <td><%= p.name %></td>
+      <td>$<%= p.price %></td>
+    </tr>
+  <% end %>
 </table>
+
+
+<dl>
+  <% if current_user.has_payment_info? -%>
+      <dt>Name</dt>
+      <dd><%= current_user.name %></dd>
+      <dt>Email</dt>
+      <dd><%= current_user.email %></dd>
+      <dt>Credit Card</dt>
+      <dd><%= current_user.masked_cc %></dd>
+  <% else -%>
+      <dt>Setup Your Payment Info</dt>
+  <% end %>
+    <dt>Last Logged In</dt>
+    <dd><%= current_user.last_sign_in_at %></dd>
+</dl>

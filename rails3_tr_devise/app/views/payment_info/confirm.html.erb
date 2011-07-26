@@ -1,0 +1,14 @@
+<h1>Payment Info Confirmation</h1>
+
+<dl>
+  <dt>First Name</dt>
+  <dd><%= @result.customer.first_name %></dd>
+  <dt>Last Name</dt>
+  <dd><%= @result.customer.last_name %></dd>
+  <dt>Phone</dt>
+  <dd><%= @result.customer.phone %></dd>
+  <dt>Credit Card</dt>
+  <%= @result.customer.credit_cards.each do |cc| %>
+    <dd><%= cc.masked_number %></dd>
+  <% end %>
+</dl>

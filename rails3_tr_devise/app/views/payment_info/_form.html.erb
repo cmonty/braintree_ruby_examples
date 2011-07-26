@@ -1,6 +1,26 @@
 <%= form_for :customer, :url => Braintree::TransparentRedirect.url do |c| %>
-  <dl>
-    <dt></dt>
-    <dd></dd>
-  </dl>
+  <%= field_set_tag "Customer" do %>
+    <dl>
+      <dt><%= c.label :first_name, 'First Name' %></dt>
+      <dd><%= c.text_field :first_name %></dd>
+      <dt><%= c.label :last_name, 'Last Name' %></dt>
+      <dd><%= c.text_field :last_name %></dd>
+      <dt><%= c.label :phone, 'Phone' %></dt>
+      <dd><%= c.text_field :phone %></dd>
+    </dl>
+  <% end %>
+  <%= field_set_tag "Credit Card" do %>
+    <% c.fields_for :credit_card do |cc| %>
+      <dl>
+        <dt><%= cc.label :number, 'Number' %></dt>
+        <dd><%= cc.text_field :number %></dd>
+        <dt><%= cc.label :expiration_date, 'Exipration Date (MM/YY)' %></dt>
+        <dd><%= cc.text_field :expiration_date %></dd>
+        <dt><%= cc.label :cvv, 'CVV' %></dt>
+        <dd><%= cc.text_field :cvv %></dd>
+      </dl>
+    <% end %>
+  <% end %>
+  <%= hidden_field_tag :tr_data, @tr_data %>
+  <%= c.submit 'Save Payment Info' %>
 <% end %>

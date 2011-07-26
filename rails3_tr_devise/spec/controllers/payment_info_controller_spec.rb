@@ -9,9 +9,9 @@ describe PaymentInfoController do
     visit new_payment_info_path
 
     page.should have_content('Add Payment Info')
-    # page.fill_in 'customer_credit_card', :with => '4111111111111111'
-    # page.fill_in 'customer_expiration', :with => '01/25'
-    # page.fill_in 'customer_cvv', :with => '400'
-    # page.click_button 'Save Payment Info'
+    page.fill_in 'customer_credit_card_number', :with => '4111111111111111'
+    page.fill_in 'customer_credit_card_expiration_date', :with => '01/25'
+    page.fill_in 'customer_credit_card_cvv', :with => '400'
+    page.click_button 'Save Payment Info'
   end
 end

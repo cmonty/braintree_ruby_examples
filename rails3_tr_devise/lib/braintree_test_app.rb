@@ -11,8 +11,7 @@ class BraintreeTestApp
       uri = URI.parse(config.protocol + "://" + config.server + ":" +
         config.port.to_s + request.path)
       http = Net::HTTP.new(uri.host, uri.port)
-      # http.use_ssl = true
-      # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      http.use_ssl = true unless config.merchant_id =~ /integration_/
       res = http.post(uri.path, request.body.read)
 
       if res.code == "303"

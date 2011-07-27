@@ -1,3 +1,9 @@
+<% if @result %>
+  <div style="color:red;" id="total-errors">
+    <%= h(@result.errors.size) %> error(s)
+  </div>
+<% end %>
+
 <%= form_for :customer,
       :url => Braintree::TransparentRedirect.url,
       :params => @result && @result.params[:customer],

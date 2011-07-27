@@ -31,5 +31,6 @@ describe PaymentInfoController do
     page.should have_content('Add Payment Info')
     page.should have_field('customer_credit_card_expiration_date', :with => '01/05')
     page.should have_field('customer_credit_card_cvv')
+    page.should have_css('#total-errors')
   end
 end

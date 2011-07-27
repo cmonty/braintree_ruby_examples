@@ -39,6 +39,6 @@ module Rails3TrDevise
     # Enable the asset pipeline
     config.assets.enabled = true
 
-    config.middleware.use "BraintreeTestApp"
+    config.middleware.use "BraintreeInterceptor" if Rails.env.test?
   end
 end

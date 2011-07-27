@@ -6,15 +6,14 @@ class PaymentInfoController < ApplicationController
   end
 
   def confirm
-   @result = Braintree::TransparentRedirect.confirm(request.query_string)
+    @result = Braintree::TransparentRedirect.confirm(request.query_string)
 
-   if @result.success?
+    if @result.success?
     current_user.braintree_customer_id = @result.customer.id
     current_user.save!
     render :action => "confirm"
-   else
+    else
     render :action => "new"
-   end
-
+    end
   end
 end

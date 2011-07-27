@@ -22,5 +22,14 @@ describe PaymentInfoController do
     sign_in_as_user
 
     visit new_payment_info_path
+
+    page.should have_content('Add Payment Info')
+    page.fill_in 'customer_credit_card_expiration_date', :with => '01/05'
+    page.fill_in 'customer_credit_card_cvv', :with => '400'
+    page.click_button 'Save Payment Info'
+
+    page.should have_content('Add Payment Info')
+    page.should have_field('customer_credit_card_expiration_date', :with => '01/05')
+    page.should have_field('customer_credit_card_cvv')
   end
 end

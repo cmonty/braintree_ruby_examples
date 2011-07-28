@@ -3,7 +3,7 @@
   <% @products.each do |p| -%>
     <tr>
       <td><%= p.name %></td>
-      <\d>$<%= p.price %></td>
+      <td>$<%= p.price %></td>
     </tr>
   <% end -%>
 </table>
@@ -18,7 +18,7 @@
       <dt>Credit Card</dt>
       <dd><%= current_user.masked_cc %></dd>
   <% else -%>
-      <dt>Setup Your Payment Info</dt>
+    <dt><%= link_to "Setup Your Payment Info", new_payment_info_path  %></dt>
   <% end %>
     <dt>Last Logged In</dt>
     <dd><%= current_user.last_sign_in_at %></dd>

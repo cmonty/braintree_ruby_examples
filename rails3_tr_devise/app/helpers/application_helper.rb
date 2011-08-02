@@ -7,6 +7,7 @@ module ApplicationHelper
       super
       @braintree_params = @options[:params]
       @braintree_errors = @options[:errors]
+      @braintree_existing = @options[:existing]
     end
 
     def fields_for(record_name, *args, &block)
@@ -31,6 +32,8 @@ module ApplicationHelper
     def determine_value(method)
       if @braintree_params
         @braintree_params[method]
+      elsif @braintree_existing
+        @braintree_existing.send(method)
       else
         nil
       end

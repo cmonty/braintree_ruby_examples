@@ -6,7 +6,8 @@ def valid_attributes(attrs = {})
   { :username => 'testuser',
     :email => 'test@example.com',
     :password => '123456',
-    :password_confirmation => '123456' }.update(attrs)
+    :password_confirmation => '123456',
+    :braintree_customer_id => '663636' }.update(attrs)
 end
 
 def create_user(attrs = {})

@@ -1,3 +1,17 @@
+module BraintreeUser
+
+  FIELDS = [:first_name, :last_name, :phone, :website, :company, :email, :fax, :addresses, :credit_cards, :custom_fields]
+
+  def self.attach_braintree_data(user)
+    braintree_data = Braintree::Customer.find(user.braintree_customer_id)
+
+    FIELDS.each do |field|
+      user.class.send(:define_method, field) { braintree_data.send(field) }
+    end
+  end
+
+end
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -5,9 +19,16 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :braintree_customer_id
+
+  include BraintreeUser
 
   def has_payment_info?
     !!self.braintree_customer_id
+  end
+
+  def with_braintree_data!
+    BraintreeUser.attach_braintree_data(self)
+    self
   end
 end

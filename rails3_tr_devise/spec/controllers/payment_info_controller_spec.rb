@@ -40,4 +40,15 @@ describe PaymentInfoController do
     page.should have_field('customer_credit_card_cvv')
     page.should have_css('#total-errors')
   end
+
+  it 'should display form to edit existing customer data' do
+    sign_in_as_user
+
+    visit edit_payment_info_path(:id => '1')
+
+    page.should have_content('Edit Payment Info')
+    page.should have_field('customer_first_name', :with => 'Big')
+    page.should have_field('customer_last_name', :with => 'Spender')
+    page.should have_content('411111******1111')
+  end
 end

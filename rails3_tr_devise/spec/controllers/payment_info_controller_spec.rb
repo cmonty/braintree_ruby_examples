@@ -59,4 +59,5 @@ describe PaymentInfoController do
     page.should have_content('Big')
   end
 
+
 end

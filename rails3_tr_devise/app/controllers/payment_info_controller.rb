@@ -7,10 +7,10 @@ class PaymentInfoController < ApplicationController
   end
 
   def edit
-    @customer = current_user.with_braintree_data!
+    current_user.with_braintree_data!
     @tr_data = Braintree::TransparentRedirect.
                 update_customer_data(:redirect_url => confirm_payment_info_url,
-                                     :customer_id => @customer.braintree_customer_id)
+                                     :customer_id => current_user.braintree_customer_id)
   end
 
   def confirm
@@ -21,7 +21,7 @@ class PaymentInfoController < ApplicationController
       current_user.save!
       render :action => "confirm"
     elsif current_user.has_payment_info?
-      @customer = current_user.with_braintree_data!
+      current_user.with_braintree_data!
       render :action => "edit"
     else
       render :action => "new"

@@ -50,5 +50,13 @@ describe PaymentInfoController do
     page.should have_field('customer_first_name', :with => 'Big')
     page.should have_field('customer_last_name', :with => 'Spender')
     page.should have_content('411111******1111')
+
+    page.fill_in 'customer_first_name', :with => 'Big'
+    page.fill_in 'customer_last_name', :with => 'Spender'
+    page.click_button 'Save Payment Info'
+
+    page.should have_content('Payment Info Confirmation')
+    page.should have_content('Big')
   end
+
 end

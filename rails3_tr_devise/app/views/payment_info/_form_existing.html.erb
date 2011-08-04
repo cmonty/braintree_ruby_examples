@@ -7,7 +7,7 @@
 <%= form_for :customer,
       :url => Braintree::TransparentRedirect.url,
       :params => @result && @result.params[:customer],
-      :existing => @customer,
+      :existing => current_user,
       :builder => ApplicationHelper::BraintreeFormBuilder,
       :errors => @result && @result.errors.for(:customer) do |f| %>
   <%= field_set_tag "Customer" do %>
@@ -21,7 +21,7 @@
     </dl>
   <% end %>
   <ul>
-    <% @customer.credit_cards.each do |cc| %>
+    <% current_user.credit_cards.each do |cc| %>
       <li><%= cc.masked_number %> (<%= cc.token %>)</li>
     <% end %>
   </ul>

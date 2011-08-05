@@ -8,6 +8,7 @@ class PaymentInfoController < ApplicationController
 
   def edit
     current_user.with_braintree_data!
+    @credit_card = current_user.default_credit_card
     @tr_data = Braintree::TransparentRedirect.
                 update_customer_data(:redirect_url => confirm_payment_info_url,
                                      :customer_id => current_user.braintree_customer_id)

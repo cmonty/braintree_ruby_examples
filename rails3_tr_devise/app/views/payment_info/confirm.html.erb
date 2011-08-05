@@ -8,7 +8,7 @@
   <dt>Phone</dt>
   <dd><%= @result.customer.phone %></dd>
   <dt>Credit Card</dt>
-  <%= @result.customer.credit_cards.each do |cc| %>
+  <% @result.customer.credit_cards.each do |cc| %>
     <dd><%= cc.masked_number %></dd>
   <% end %>
 </dl>

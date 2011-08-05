@@ -30,6 +30,7 @@
       <dd><%= current_user.email %></dd>
       <dt>Credit Card</dt>
       <dd><%= current_user.credit_cards.first.masked_number%></dd>
+      <dt><%= link_to "Edit Your Payment Info", edit_payment_info_path(current_user.id) %></dt>
   <% else -%>
     <dt><%= link_to "Setup Your Payment Info", new_payment_info_path  %></dt>
   <% end %>

@@ -10,7 +10,7 @@ describe WelcomeController do
     page.should have_content('Sign in')
   end
 
-  it "should display product information" do
+  it "should display product and transaction information" do
     Product.create(:name => 'FooBar', :price => 100)
 
     sign_in_as_user :braintree_customer_id => '663636'
@@ -21,7 +21,18 @@ describe WelcomeController do
     page.should have_content('Products')
 
     page.should have_content('Transactions')
-    page.should have_table('transactions')
+    page.should have_table('transactions', :rows => [['g3styb', '90.46', 'Authorized']])
+  end
+
+  it "should display product information" do
+    Product.create(:name => 'FooBar', :price => 100)
+
+    sign_in_as_user
+
+    visit root_path
+
+    page.should have_table('products', :rows => [['FooBar', '$100.0', 'Buy FooBar']])
+    page.should have_content('Products')
   end
 
   it "should display link to setup payment info" do

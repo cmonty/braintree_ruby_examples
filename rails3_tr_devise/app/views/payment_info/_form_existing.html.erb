@@ -22,7 +22,7 @@
   <% end %>
   <ul>
     <% current_user.credit_cards.each do |cc| %>
-      <li><%= cc.masked_number %> (<%= cc.token %>)</li>
+      <li><%= cc.masked_number %> (<%= link_to cc.token, edit_credit_card_info_path(:id => cc.token) %>)</li>
     <% end %>
   </ul>
   <%= hidden_field_tag :tr_data, @tr_data %>

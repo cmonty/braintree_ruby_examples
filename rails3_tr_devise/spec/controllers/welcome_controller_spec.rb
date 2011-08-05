@@ -17,7 +17,7 @@ describe WelcomeController do
 
     visit root_path
 
-    page.should have_table('products')
+    page.should have_table('products', :rows => [['FooBar', '$100.0', 'Buy FooBar']])
     page.should have_content('Products')
   end
 

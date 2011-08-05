@@ -6,16 +6,15 @@ def valid_attributes(attrs = {})
   { :username => 'testuser',
     :email => 'test@example.com',
     :password => '123456',
-    :password_confirmation => '123456',
-    :braintree_customer_id => '663636' }.update(attrs)
+    :password_confirmation => '123456'}.update(attrs)
 end
 
 def create_user(attrs = {})
   User.create!(valid_attributes(attrs))
 end
 
-def sign_in_as_user
-  user = create_user
+def sign_in_as_user(attrs = {})
+  user = create_user(attrs)
 
   visit new_user_session_path
 

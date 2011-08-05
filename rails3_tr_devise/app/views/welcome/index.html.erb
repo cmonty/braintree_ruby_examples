@@ -4,6 +4,7 @@
     <tr>
       <td><%= p.name %></td>
       <td>$<%= p.price %></td>
+      <td><%= link_to "Buy #{p.name}", new_transaction_path(:product_id => p.id) %></td>
     </tr>
   <% end -%>
 </table>

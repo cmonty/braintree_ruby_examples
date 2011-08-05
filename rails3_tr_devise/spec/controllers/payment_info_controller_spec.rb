@@ -11,6 +11,15 @@ describe PaymentInfoController do
     page.should have_content('Add Payment Info')
   end
 
+  it 'should display sign in page for unauthorized user (new)' do
+
+    visit new_payment_info_path
+
+    page.should have_content('Sign in')
+    page.should have_field('user_email')
+    page.should have_field('user_password')
+  end
+
   it 'should make new payment info' do
     sign_in_as_user
 
@@ -42,7 +51,7 @@ describe PaymentInfoController do
   end
 
   it 'should display form to edit existing customer data' do
-    sign_in_as_user
+    sign_in_as_user :braintree_customer_id => '663636'
 
     visit edit_payment_info_path(:id => '1')
 
@@ -60,4 +69,12 @@ describe PaymentInfoController do
   end
 
 
+  it 'should display sign in page for unauthorized user (edit)' do
+
+    visit edit_payment_info_path(:id => '1')
+
+    page.should have_content('Sign in')
+    page.should have_field('user_email')
+    page.should have_field('user_password')
+  end
 end

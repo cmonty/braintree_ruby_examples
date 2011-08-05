@@ -13,12 +13,15 @@ describe WelcomeController do
   it "should display product information" do
     Product.create(:name => 'FooBar', :price => 100)
 
-    sign_in_as_user
+    sign_in_as_user :braintree_customer_id => '663636'
 
     visit root_path
 
     page.should have_table('products', :rows => [['FooBar', '$100.0', 'Buy FooBar']])
     page.should have_content('Products')
+
+    page.should have_content('Transactions')
+    page.should have_table('transactions')
   end
 
   it "should display link to setup payment info" do

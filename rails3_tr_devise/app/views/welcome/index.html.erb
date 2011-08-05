@@ -9,6 +9,17 @@
   <% end -%>
 </table>
 
+<% if @transactions %>
+  <h1>Transactions</h1>
+  <table id="transactions">
+    <%= @transactions.each do |t| -%>
+      <tr>
+        <td><%= t.id %></td>
+        <td><%= t.amount %></td>
+      </tr>
+    <% end -%>
+  </table>
+<% end %>
 
 <dl>
   <% if current_user.has_payment_info? -%>

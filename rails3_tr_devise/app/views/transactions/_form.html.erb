@@ -1,0 +1,31 @@
+<% if @result %>
+  <div style="color:red;" id="total-errors">
+    <%= h(@result.errors.size) %> error(s)
+    <%= h(@result.message) %>
+  </div>
+<% end %>
+
+<%= form_for :transaction,
+      :url => Braintree::TransparentRedirect.url,
+      :params => @result && @result.params[:transaction],
+      :builder => ApplicationHelper::BraintreeFormBuilder,
+      :errors => @result && @result.errors.for(:transaction) do |f| %>
+  <h2>Customer Information</h2>
+  <dl>
+    <dt>First Name</dt>
+    <dd><%= current_user.first_name %></dd>
+    <dt>Last Name</dt>
+    <dd><%= current_user.last_name %></dd>
+    <dt>Phone</dt>
+    <dd><%= current_user.phone %></dd>
+  </dl>
+  <h2>Credit Card Information</h2>
+  <dl>
+    <dt>Number</dt>
+    <dd><%= @credit_card.masked_number %></dd>
+    <dt>Expiration Date</dt>
+    <dd><%= @credit_card.expiration_date %></dd>
+  </dl>
+  <%= hidden_field_tag :tr_data, @tr_data %>
+  <%= f.submit 'Confirm Purchase', :class => 'buy', :disable_with => 'Please wait...' %>
+<% end %>

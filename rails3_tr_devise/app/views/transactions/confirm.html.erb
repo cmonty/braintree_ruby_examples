@@ -1,0 +1,10 @@
+<h1>Receipt</h1>
+
+<h2>Transaction <%= @result.transaction.id %></h2>
+
+<dl>
+  <dt>Amount</dt>
+  <dd>$<%= @result.transaction.amount %></dd>
+  <dt>Credit Card Charged</dt>
+  <dd><%= @result.transaction.credit_card_details.masked_number %></dd>
+</dl>

@@ -3,20 +3,29 @@ require 'spec_helper'
 describe TransactionsController do
   render_views
 
-  it "should display page to purchase product" do
+  it "should purchase product" do
     sign_in_as_user :braintree_customer_id => '663636'
 
-    visit root_path
-    p page.body
-
-    page.click_link('Buy FooBar')
+    visit new_transaction_path(:product_id => '1')
 
     page.should have_content('Confirm Purchase')
-    page.should have_button('#buy')
+    page.should have_content('Big')
+    page.should have_content('Spender')
+    page.should have_content('356600******7510')
+    page.should have_content('04/2012')
+    page.should have_button('Confirm Purchase')
 
-    page.click_button('#buy')
+    page.click_button 'Confirm Purchase'
 
     page.should have_content('Receipt')
+  end
+
+  it "should display new payment information form" do
+    sign_in_as_user
+
+    visit new_transaction_path(:product_id => '1')
+
+    page.should have_content('Add Payment Info')
   end
 
 end

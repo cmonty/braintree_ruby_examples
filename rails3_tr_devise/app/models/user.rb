@@ -28,7 +28,15 @@ class User < ActiveRecord::Base
   end
 
   def with_braintree_data!
+    return self unless self.has_payment_info?
+
     BraintreeUser.attach_braintree_data(self)
     self
+  end
+
+  def default_credit_card
+    return nil unless self.has_payment_info?
+
+    self.credit_cards.find { |cc| cc.default? }
   end
 end

@@ -4,6 +4,8 @@ describe TransactionsController do
   render_views
 
   it "should purchase product" do
+    Product.create(:name => 'FooBar', :price => 100)
+
     sign_in_as_user :braintree_customer_id => '663636'
 
     visit new_transaction_path(:product_id => '1')

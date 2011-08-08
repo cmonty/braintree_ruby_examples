@@ -1,4 +1,4 @@
-Braintree::Configuration.environment = :development
-Braintree::Configuration.merchant_id = "integration_merchant_id"
-Braintree::Configuration.public_key = "integration_public_key"
-Braintree::Configuration.private_key = "integration_private_key"
+Braintree::Configuration.environment = :sandbox
+Braintree::Configuration.merchant_id = "your_merchant_id"
+Braintree::Configuration.public_key = "your_public_key"
+Braintree::Configuration.private_key = "your_private_key"

@@ -20,5 +20,7 @@ See rails3_tr_checkout/README for instructions on running the example.
 
 ## rails3_tr_devise
 
-A Rails 3 example of linking a Braintree Customer with a local Devise user using the Braintree transparent redirect API.
+A Rails 3 example of linking a Braintree Customer with a local [Devise][dev] user using the Braintree transparent redirect API.
 See rails3_tr_devise/README for instructions on running the example.
+
+[dev]: https://github.com/plataformatec/devise

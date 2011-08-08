@@ -1,16 +1,16 @@
-class PaymentInfoController < ApplicationController
+class CustomerController < ApplicationController
   before_filter :authenticate_user!
 
   def new
     @tr_data = Braintree::TransparentRedirect.
-                create_customer_data(:redirect_url => confirm_payment_info_url)
+                create_customer_data(:redirect_url => confirm_customer_url)
   end
 
   def edit
     current_user.with_braintree_data!
     @credit_card = current_user.default_credit_card
     @tr_data = Braintree::TransparentRedirect.
-                update_customer_data(:redirect_url => confirm_payment_info_url,
+                update_customer_data(:redirect_url => confirm_customer_url,
                                      :customer_id => current_user.braintree_customer_id)
   end
 

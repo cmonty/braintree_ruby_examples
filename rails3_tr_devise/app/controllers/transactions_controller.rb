@@ -14,7 +14,7 @@ class TransactionsController < ApplicationController
                                                                    :customer_id => current_user.braintree_customer_id
                                                                   })
     else
-      redirect_to new_payment_info_path
+      redirect_to new_customer_path
     end
   end
 

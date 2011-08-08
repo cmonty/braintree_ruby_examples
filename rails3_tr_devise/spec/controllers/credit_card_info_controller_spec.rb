@@ -20,7 +20,7 @@ describe CreditCardInfoController do
   it "should display form to edit credit card from editing user info" do
     sign_in_as_user :braintree_customer_id => '663636'
 
-    visit edit_payment_info_path(:id => '1')
+    visit edit_customer_path(:id => '1')
 
     page.should have_link('FDJCB')
     page.click_link('FDJCB')

@@ -1,3 +1,5 @@
+# Based on:
+# http://www.enlightsolutions.com/articles/integration-testing-braintrees-transparent-redirect-with-rails-and-cucumber/
 class BraintreeInterceptor
   def initialize(app)
     @app = app

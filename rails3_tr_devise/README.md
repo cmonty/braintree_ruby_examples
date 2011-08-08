@@ -7,6 +7,7 @@ Explore this example for one way to integrate [Devise's][dev] account management
 [brt]: http://www.braintreepayments.com
 
 Included examples:
+
 1. Creating Customer Data (including Payment Method) using Transparent Redirect
 2. Linking Devise user with Braintree Customer
 3. Using default Payment Information to purchase an item

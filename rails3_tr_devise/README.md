@@ -17,7 +17,9 @@ Included examples:
 2. `$ cd rails3_tr_devise`
 3. `$ gem install bundler`
 4. `$ bundle install`
-5. Edit `config/initializers/braintree.rb` with your Merchant ID and API keys. If you need access to the Sandbox [contact Braintree][contact]
-6. `$ rails s`
+5. `$ rake db:migrate`
+6. `$ rake db:seed`
+7. Edit `config/initializers/braintree.rb` with your Merchant ID and API keys. If you need access to the Sandbox [contact Braintree][contact]
+8. `$ rails s`
 
 [contact]: http://bit.ly/contact-braintree

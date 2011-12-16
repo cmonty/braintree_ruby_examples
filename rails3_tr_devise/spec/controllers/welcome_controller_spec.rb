@@ -21,7 +21,7 @@ describe WelcomeController do
     page.should have_content('Products')
 
     page.should have_content('Transactions')
-    page.should have_table('transactions', :rows => [['g3styb', '90.46', 'Authorized']])
+    page.should have_table('transactions')
   end
 
   it "should display product information" do
